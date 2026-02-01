@@ -23,10 +23,10 @@ Projeto de automação de testes Web com Robot Framework e SeleniumLibrary. Apli
 ## Clonar o projeto do Github
 
 No terminal, execute:
-- git clone https://github.com/SEU_USUARIO/Smart_NX_QA_JUNIOR_SeuNome.git
+- git clone https://github.com/marcelosoaresschneider/Smart_NX_QA_JUNIOR_MarceloSoaresSchneider.git
 
 Depois entre na pasta do projeto
-- cd Smart_NX_QA_JUNIOR_SeuNome
+- cd Smart_NX_QA_JUNIOR_MarceloSoaresSchneider
 
 
 

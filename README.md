@@ -4,28 +4,11 @@ Projeto de automação de testes Web com Robot Framework e SeleniumLibrary. Apli
 
 
 
-## Estrutura do projeto
+## Estrutura do das pastas no projeto
 
-Smart_NX_QA_JUNIOR_MarceloSoaresSchneider/
-├─ README.md
-├─ requirements.txt
-├─ .gitignore
-├─ tests/
-│  ├─ 01_login.robot
-│  ├─ 02_pim.robot
-│  ├─ 03_employee_cadastro.robot
-│  ├─ 04_employee_filtros.robot
-│  └─ 05_employee_exclusao.robot
-├─ resources/
-│  ├─ common.resource
-│  ├─ locators.resource
-│  ├─ login.resource
-│  ├─ pim.resource
-│  └─ employee.resource
-└─ results/
-   ├─ log.html
-   ├─ report.html
-   └─ output.xml
+- `tests/` → arquivos `.robot` (casos de teste)
+- `resources/` → keywords e variáveis reutilizáveis
+- `results/` → relatórios gerados ao executar (log e report)
 
 
 
@@ -34,4 +17,43 @@ Smart_NX_QA_JUNIOR_MarceloSoaresSchneider/
 - Python instalado (3.10 ou superior)
 - Google Chrome instalado
 - Git instalado
+
+
+
+## Clonar o projeto do Github
+
+No terminal, execute:
+- git clone https://github.com/marcelosoaresschneider/Smart_NX_QA_JUNIOR_MarceloSoaresSchneider.git
+
+Depois entre na pasta do projeto
+- cd Smart_NX_QA_JUNIOR_MarceloSoaresSchneider
+
+
+
+## Instalar as dependências (RobotFramework e a SeleniumLibrary)
+
+Criar o arquivo `requirements.txt` (na raiz do projeto) e preencher com:
+- robotframework==7.0.1
+- robotframework-seleniumlibrary==6.6.1
+- selenium==4.23.1
+
+Dentro da pasta do projeto no terminal, execute:
+- py -m pip install -r requirements.txt
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

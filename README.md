@@ -4,28 +4,11 @@ Projeto de automação de testes Web com Robot Framework e SeleniumLibrary. Apli
 
 
 
-## Estrutura do projeto
+## Estrutura do das pastas no projeto
 
-Smart_NX_QA_JUNIOR_MarceloSoaresSchneider/
-├─ README.md
-├─ requirements.txt
-├─ .gitignore
-├─ tests/
-│  ├─ 01_login.robot
-│  ├─ 02_pim.robot
-│  ├─ 03_employee_cadastro.robot
-│  ├─ 04_employee_filtros.robot
-│  └─ 05_employee_exclusao.robot
-├─ resources/
-│  ├─ common.resource
-│  ├─ locators.resource
-│  ├─ login.resource
-│  ├─ pim.resource
-│  └─ employee.resource
-└─ results/
-   ├─ log.html
-   ├─ report.html
-   └─ output.xml
+- `tests/` → arquivos `.robot` (casos de teste)
+- `resources/` → keywords e variáveis reutilizáveis
+- `results/` → relatórios gerados ao executar (log e report)
 
 
 

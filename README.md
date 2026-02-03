@@ -23,10 +23,10 @@ Projeto de automação de testes Web com Robot Framework e SeleniumLibrary. Apli
 ## Clonar o projeto do Github
 
 No terminal, execute:
-- git clone https://github.com/marcelosoaresschneider/Smart_NX_QA_JUNIOR_MarceloSoaresSchneider.git
+- "git clone https://github.com/marcelosoaresschneider/Smart_NX_QA_JUNIOR_MarceloSoaresSchneider.git"
 
 Depois entre na pasta do projeto
-- cd Smart_NX_QA_JUNIOR_MarceloSoaresSchneider
+- "cd Smart_NX_QA_JUNIOR_MarceloSoaresSchneider"
 
 
 
@@ -35,11 +35,11 @@ Depois entre na pasta do projeto
 Criar o arquivo `requirements.txt` (na raiz do projeto) e preencher com:
 
 - "robotframework==7.0.1"
-- robotframework-seleniumlibrary==6.6.1
-- selenium==4.23.1
+- "robotframework-seleniumlibrary==6.6.1"
+- "selenium==4.23.1"
 
 Dentro da pasta do projeto no terminal, execute:
-- py -m pip install -r requirements.txt
+- "py -m pip install -r requirements.txt"
 
 
 
@@ -47,7 +47,7 @@ Dentro da pasta do projeto no terminal, execute:
 
 Executar todos os testes e gerar relatórios na pasta results/:
 
-- robot -d results tests/
+- "robot -d results tests/"
 
 
 

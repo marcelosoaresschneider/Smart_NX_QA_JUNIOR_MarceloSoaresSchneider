@@ -1,8 +1,8 @@
 *** Settings ***
 Resource        ../resources/login.resource
 Resource        ../resources/locators.resource
-Suite Setup     Dado que acesso a tela de login
-Suite Teardown  Fechar Navegador
+Test Setup      Dado que acesso a tela de login
+Test Teardown   Fechar Navegador
 
 *** Test Cases ***
 CT01 - Login com sucesso

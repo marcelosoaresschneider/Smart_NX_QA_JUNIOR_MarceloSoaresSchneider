@@ -73,7 +73,9 @@ Quando tento cadastrar com Employee ID ja existente
     Clique seguro    ${BTN_SAVE}
 
 Então devo ver mensagem de Employee ID ja existente
-    Wait Until Page Contains    Employee Id already exists    10s
+    Wait Until Page Contains Element    ${EMP_ID_EXISTS_ERROR}    10s
+    ${msg}=    Get Text    ${EMP_ID_EXISTS_ERROR}
+    Should Contain    ${msg}    exist    ignore_case=True
 
 Quando pesquiso employee pelo nome
     [Arguments]    ${first}    ${last}
@@ -103,7 +105,7 @@ Quando deleto o employee pelo ID e cancelo
     Quando pesquiso employee pelo ID    ${emp_id}
     Então devo ver o employee na lista  ${emp_id}
 
-    Click Element    xpath=(//div[contains(@class,'oxd-table-body')]//div[@role='row']//*[normalize-space()='${emp_id}']/ancestor::div[@role='row']//button[contains(@class,'oxd-icon-button')])[last()]
+    Click Element    xpath=(//div[contains(@class,'oxd-table-body')]//div[@role='row']//*[contains(normalize-space(.),'${emp_id}')]/ancestor::div[@role='row']//button[contains(@class,'oxd-icon-button')])[last()]
     Wait Until Element Is Visible    ${BTN_CANCEL_DELETE}    10s
     Esperar loader sumir
     Clique seguro    ${BTN_CANCEL_DELETE}
@@ -119,7 +121,7 @@ Quando deleto o employee pelo ID e confirmo
     Quando pesquiso employee pelo ID    ${emp_id}
     Então devo ver o employee na lista  ${emp_id}
 
-    Click Element    xpath=(//div[contains(@class,'oxd-table-body')]//div[@role='row']//*[normalize-space()='${emp_id}']/ancestor::div[@role='row']//button[contains(@class,'oxd-icon-button')])[last()]
+    Click Element    xpath=(//div[contains(@class,'oxd-table-body')]//div[@role='row']//*[contains(normalize-space(.),'${emp_id}')]/ancestor::div[@role='row']//button[contains(@class,'oxd-icon-button')])[last()]
     Wait Until Element Is Visible    ${BTN_CONFIRM_DELETE}    10s
     Esperar loader sumir
     Clique seguro    ${BTN_CONFIRM_DELETE}

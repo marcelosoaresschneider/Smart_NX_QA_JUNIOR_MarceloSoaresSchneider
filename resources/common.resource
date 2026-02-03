@@ -27,7 +27,7 @@ Gerar dados simples de Employee
     ${id}=      Generate Random String    6    [NUMBERS]
     ${first}=   Set Variable    Test${rand}
     ${last}=    Set Variable    User${rand}
-    [Return]    ${first}    ${last}    ${id}
+    RETURN    ${first}    ${last}    ${id}
 
 Garantir que estou na lista de Employees (PIM)
     Ir para o módulo PIM (Employee List)

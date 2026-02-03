@@ -14,26 +14,26 @@ ${USER_DROPDOWN}            xpath=//span[contains(@class,'oxd-userdropdown-tab')
 
 ${SIDEBAR_SEARCH_INPUT}     xpath=//input[@placeholder='Search']
 
-${MENU_PIM}                 xpath=//span[normalize-space()='PIM']/ancestor::a
+${MENU_PIM}                 xpath=//span[contains(normalize-space(.),'PIM')]/ancestor::a
 
 ${BTN_ADD}                  xpath=//button[normalize-space()='+ Add' or normalize-space()='Add' or contains(.,'Add')]
-${BTN_SEARCH}               xpath=//button[normalize-space()='Search']
-${BTN_RESET}                xpath=//button[normalize-space()='Reset']
-${NO_RECORDS}               xpath=//span[normalize-space()='No Records Found']
+${BTN_SEARCH}               xpath=//button[contains(normalize-space(.),'Search')]
+${BTN_RESET}                xpath=//button[contains(normalize-space(.),'Reset')]
+${NO_RECORDS}               xpath=//span[contains(normalize-space(.),'No Records Found')]
 
-${EMPLOYEE_NAME_FILTER}     xpath=//label[normalize-space()='Employee Name']/../following-sibling::div//input
-${EMPLOYEE_ID_FILTER}       xpath=//label[normalize-space()='Employee Id']/../following-sibling::div//input
+${EMPLOYEE_NAME_FILTER}     xpath=//label[contains(normalize-space(.),'Employee Name')]/../following-sibling::div//input
+${EMPLOYEE_ID_FILTER}       xpath=//label[contains(normalize-space(.),'Employee Id')]/../following-sibling::div//input
 
 ${FIRST_NAME}               xpath=//input[@name='firstName']
 ${MIDDLE_NAME}              xpath=//input[@name='middleName']
 ${LAST_NAME}                xpath=//input[@name='lastName']
-${EMPLOYEE_ID_ADD}          xpath=//label[normalize-space()='Employee Id']/../following-sibling::div//input
-${BTN_SAVE}                 xpath=//button[@type='submit' and (normalize-space()='Save' or .//*[normalize-space()='Save'])]
+${EMPLOYEE_ID_ADD}          xpath=//label[contains(normalize-space(.),'Employee Id')]/../following-sibling::div//input
+${BTN_SAVE}                 xpath=//button[@type='submit' and (contains(normalize-space(.),'Save') or .//*[contains(normalize-space(.),'Save')])]
 
-${REQUIRED_ERROR}           xpath=//span[contains(@class,'oxd-input-field-error-message') and normalize-space()='Required']
-${EMP_ID_EXISTS_ERROR}      xpath=//label[normalize-space()='Employee Id']/../..//span[contains(@class,'oxd-input-field-error-message')]
+${REQUIRED_ERROR}           xpath=//span[contains(@class,'oxd-input-field-error-message') and contains(normalize-space(.),'Required')]
+${EMP_ID_EXISTS_ERROR}      xpath=//label[contains(normalize-space(.),'Employee Id')]/../..//span[contains(@class,'oxd-input-field-error-message')]
 
 ${LISTBOX}                  xpath=//div[@role='listbox']
 
-${BTN_CONFIRM_DELETE}       xpath=//button[normalize-space()='Yes, Delete']
-${BTN_CANCEL_DELETE}        xpath=//button[normalize-space()='No, Cancel']
+${BTN_CONFIRM_DELETE}       xpath=//button[contains(normalize-space(.),'Yes, Delete')]
+${BTN_CANCEL_DELETE}        xpath=//button[contains(normalize-space(.),'No, Cancel')]

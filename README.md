@@ -33,6 +33,25 @@ Se o comando `py` não funcionar, use:
 python -m pip install -r requirements.txt
 ```
 
+## Recomendado: criar um ambiente "limpo" (venv)
+Isso ajuda a simular um PC "novo" e evita conflito com outras instalações do Python.
+
+### Windows (PowerShell)
+Dentro da pasta do projeto:
+
+```bash
+py -m venv .venv
+\.venv\Scripts\Activate.ps1
+python -m pip install --upgrade pip
+python -m pip install -r requirements.txt
+```
+
+Para sair do venv:
+
+```bash
+deactivate
+```
+
 
 ## Erros comuns
 

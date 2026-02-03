@@ -23,7 +23,6 @@ Ir para o módulo PIM (Employee List)
     Wait Until Location Contains    /pim/    15s
 
 Gerar dados simples de Employee
-    # gera dados para evitar repetição/colisão
     ${rand}=    Generate Random String    6    [LETTERS]
     ${id}=      Generate Random String    6    [NUMBERS]
     ${first}=   Set Variable    Test${rand}

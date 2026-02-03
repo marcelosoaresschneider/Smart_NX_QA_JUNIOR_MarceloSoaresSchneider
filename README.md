@@ -1,10 +1,11 @@
 # Smart NX - QA Jr - Robot Framework + SeleniumLibrary (OrangeHRM)
 
-Projeto simples de automação de testes Web com Robot Framework e SeleniumLibrary, usando cenários em estilo Gherkin (Dado/Quando/Então/E) no site OrangeHRM. Inclui testes de Login, do módulo PIM, Cadastro de Employee, Filtros de Employee e Exclusão de Employee.
+Projeto simples de automação de testes Web com Robot Framework e SeleniumLibrary, usando cenários em estilo Gherkin (Dado/Quando/Então/E) no site OrangeHRM.  
+Inclui testes de Login, do módulo PIM, Cadastro de Employee, Filtros de Employee e Exclusão de Employee.
 
 ## Estrutura de pastas do projeto
 - `tests/` → arquivos `.robot` (casos de teste)
-- `resources/` → keywords e variáveis reutilizáveis
+- `resources/` → keywords e variáveis reutilizáveis (locators, variáveis e passos)
 - `results/` → relatórios gerados ao executar (log e report)
 
 ## Pré-condições (o que preciso ter antes da execução)
@@ -27,9 +28,20 @@ Dentro da pasta do projeto, no terminal, execute:
 py -m pip install -r requirements.txt
 ```
 
-## Executar os testes
-Executar todos os testes e gerar relatórios na pasta `results/`:
+Se o comando `py` não funcionar, use:
 
+```bash
+python -m pip install -r requirements.txt
+```
+
+## Executar os testes
+
+### Rodar somente o teste de Login (recomendado para começar)
+```bash
+robot -d results tests/01_login.robot
+```
+
+### Rodar todos os testes
 ```bash
 robot -d results tests/
 ```
@@ -44,3 +56,34 @@ Como abrir:
 1. Abra a pasta `results/`
 2. Clique duas vezes em `report.html` (abre no navegador)
 3. Se algum teste falhar, abra `log.html` para ver o erro detalhado
+
+## Dados usados nos testes (OrangeHRM demo)
+Por padrão, o projeto usa:
+- URL: `https://opensource-demo.orangehrmlive.com/web/index.php/auth/login`
+- Usuário: `Admin`
+- Senha: `admin123`
+
+Essas informações ficam em `resources/locators.resource` (variáveis `${BASE_URL}`, `${VALID_USER}`, `${VALID_PASS}`).
+
+## Problemas comuns
+
+### Erro de ChromeDriver (SessionNotCreatedException)
+Se aparecer erro parecido com:
+- "This version of ChromeDriver only supports Chrome version X"
+
+Solução simples (Windows):
+1. No terminal, execute:
+```bash
+where chromedriver
+```
+2. Se aparecer algum caminho, apague/renomeie o `chromedriver.exe` antigo.
+3. Apague o cache do Selenium:
+- Abra o Explorador de Arquivos e cole:
+```
+%USERPROFILE%\.cache\selenium
+```
+- Apague essa pasta.
+4. Rode o teste novamente.
+
+## Observação sobre arquivos gerados
+A pasta `results/` é gerada quando você executa os testes e não precisa ser enviada para o GitHub.

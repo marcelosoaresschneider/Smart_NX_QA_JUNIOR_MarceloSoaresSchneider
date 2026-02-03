@@ -5,7 +5,6 @@ Suite Teardown  Fechar Navegador
 
 *** Test Cases ***
 CT13 - Pesquisar employee pelo nome
-    # cria um employee para garantir dado de teste
     Quando clico no botao Add
     Quando preencho dados basicos do employee (sem login) e salvo
     Então o employee deve ser cadastrado com sucesso

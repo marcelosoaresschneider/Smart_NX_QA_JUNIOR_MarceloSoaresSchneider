@@ -32,7 +32,7 @@ Depois entre na pasta do projeto
 
 ## Instalar as dependências (RobotFramework e a SeleniumLibrary)
 
-Criar o arquivo `requirements.txt` (na raiz do projeto) e preencher com:
+No arquivo `requirements.txt` (na raiz do projeto) e preencha com:
 
 - "robotframework==7.0.1"
 - "robotframework-seleniumlibrary==6.6.1"

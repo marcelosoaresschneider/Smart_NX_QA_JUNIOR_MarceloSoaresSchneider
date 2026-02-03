@@ -53,6 +53,16 @@ deactivate
 ```
 
 
+## Dicas para evitar erros intermitentes
+- Feche janelas/abas do Chrome que possam roubar foco durante a execução.
+- Execute sempre com saída em uma pasta limpa:
+```bash
+rmdir /s /q results
+robot -d results tests/
+```
+- O OrangeHRM pode exibir mensagens em PT-BR ou EN; as validações de texto foram feitas por **parte do texto** para evitar quebra por variação de idioma.
+
+
 ## Erros comuns
 
 ### Erro de ChromeDriver (SessionNotCreatedException)

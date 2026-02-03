@@ -11,7 +11,7 @@ Dado que estou logado e no PIM (lista de employees)
 
 Quando clico no botao Add
     Wait Until Element Is Visible    ${BTN_ADD}    15s
-    Click Button                     ${BTN_ADD}
+    Clique seguro                    ${BTN_ADD}
     Wait Until Location Contains     /pim/addEmployee    15s
 
 Então devo ver a tela de cadastro de employee
@@ -19,7 +19,7 @@ Então devo ver a tela de cadastro de employee
 
 Quando tento salvar sem preencher o nome
     Wait Until Element Is Visible    ${BTN_SAVE}    15s
-    Click Button    ${BTN_SAVE}
+    Clique seguro    ${BTN_SAVE}
 
 Então devo ver validacao de campos obrigatorios
     Wait Until Page Contains Element    ${REQUIRED_ERROR}    10s
@@ -35,7 +35,7 @@ Quando preencho dados basicos do employee (sem login) e salvo
     Input Text    ${LAST_NAME}       ${EMP_LAST}
     Clear Element Text               ${EMPLOYEE_ID_ADD}
     Input Text    ${EMPLOYEE_ID_ADD}    ${EMP_ID}
-    Click Button   ${BTN_SAVE}
+    Clique seguro    ${BTN_SAVE}
 
 Então o employee deve ser cadastrado com sucesso
     Wait Until Location Contains    /pim/viewPersonalDetails    15s
@@ -59,7 +59,7 @@ Quando tento cadastrar com Employee ID ja existente
     Input Text    ${LAST_NAME}       ${last1}
     Clear Element Text               ${EMPLOYEE_ID_ADD}
     Input Text    ${EMPLOYEE_ID_ADD}      ${DUP_ID}
-    Click Button   ${BTN_SAVE}
+    Clique seguro    ${BTN_SAVE}
     Wait Until Location Contains     /pim/viewPersonalDetails    15s
 
     Garantir que estou na lista de Employees (PIM)
@@ -70,7 +70,7 @@ Quando tento cadastrar com Employee ID ja existente
     Input Text    ${LAST_NAME}       ${last2}
     Clear Element Text               ${EMPLOYEE_ID_ADD}
     Input Text    ${EMPLOYEE_ID_ADD}     ${DUP_ID}
-    Click Button   ${BTN_SAVE}
+    Clique seguro    ${BTN_SAVE}
 
 Então devo ver mensagem de Employee ID ja existente
     Wait Until Page Contains    Employee Id already exists    10s
@@ -82,14 +82,14 @@ Quando pesquiso employee pelo nome
     Input Text            ${EMPLOYEE_NAME_FILTER}    ${first} ${last}
     Wait Until Element Is Visible    ${LISTBOX}    10s
     Wait Until Keyword Succeeds    10x    1s    Selecionar opcao no autocomplete    ${first}
-    Click Button     ${BTN_SEARCH}
+    Clique seguro     ${BTN_SEARCH}
 
 Quando pesquiso employee pelo ID
     [Arguments]    ${emp_id}
     Garantir que estou na lista de Employees (PIM)
     Clear Element Text    ${EMPLOYEE_ID_FILTER}
     Input Text            ${EMPLOYEE_ID_FILTER}    ${emp_id}
-    Click Button          ${BTN_SEARCH}
+    Clique seguro          ${BTN_SEARCH}
 
 Então devo ver o employee na lista
     [Arguments]    ${emp_id}
@@ -106,7 +106,7 @@ Quando deleto o employee pelo ID e cancelo
     Click Element    xpath=(//div[contains(@class,'oxd-table-body')]//div[@role='row']//*[normalize-space()='${emp_id}']/ancestor::div[@role='row']//button[contains(@class,'oxd-icon-button')])[last()]
     Wait Until Element Is Visible    ${BTN_CANCEL_DELETE}    10s
     Esperar loader sumir
-    Click Button    ${BTN_CANCEL_DELETE}
+    Clique seguro    ${BTN_CANCEL_DELETE}
     Esperar loader sumir
 
 Então o employee nao deve ser excluido
@@ -122,10 +122,16 @@ Quando deleto o employee pelo ID e confirmo
     Click Element    xpath=(//div[contains(@class,'oxd-table-body')]//div[@role='row']//*[normalize-space()='${emp_id}']/ancestor::div[@role='row']//button[contains(@class,'oxd-icon-button')])[last()]
     Wait Until Element Is Visible    ${BTN_CONFIRM_DELETE}    10s
     Esperar loader sumir
-    Click Button    ${BTN_CONFIRM_DELETE}
+    Clique seguro    ${BTN_CONFIRM_DELETE}
     Esperar loader sumir
 
 Então o employee deve ser excluido
     [Arguments]    ${emp_id}
     Quando pesquiso employee pelo ID    ${emp_id}
     Então devo ver que nao existe registro
+
+
+Selecionar opcao no autocomplete
+    [Arguments]    ${texto_parcial}
+    Wait Until Element Is Visible    ${LISTBOX}    10s
+    Click Element    xpath=//div[@role='listbox']//*[contains(normalize-space(.),'${texto_parcial}')][1]

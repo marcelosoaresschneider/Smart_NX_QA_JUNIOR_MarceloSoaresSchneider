@@ -7,6 +7,20 @@ Resource    locators.resource
 Esperar loader sumir
     Run Keyword And Ignore Error    Wait Until Element Is Not Visible    ${FORM_LOADER}    15s
 
+Aguardar pagina pronta
+    Wait Until Keyword Succeeds    20x    0.5s    Documento deve estar pronto
+    Esperar loader sumir
+
+Documento deve estar pronto
+    ${state}=    Execute Javascript    return document.readyState
+    Should Be Equal    ${state}    complete
+
+Clique seguro
+    [Arguments]    ${locator}
+    Aguardar pagina pronta
+    Wait Until Element Is Visible    ${locator}    15s
+    Wait Until Keyword Succeeds    10x    1s    Click Element    ${locator}
+
 Abrir Site no Login
     Open Browser    ${BASE_URL}    ${BROWSER}
     Maximize Browser Window
@@ -18,12 +32,12 @@ Logar como Admin
     Wait Until Element Is Visible    ${LOGIN_USERNAME}    15s
     Input Text       ${LOGIN_USERNAME}    ${VALID_USER}
     Input Password   ${LOGIN_PASSWORD}    ${VALID_PASS}
-    Click Button     ${LOGIN_BUTTON}
+    Clique seguro    ${LOGIN_BUTTON}
     Wait Until Element Is Visible    ${USER_DROPDOWN}     15s
 
 Ir para o módulo PIM (Employee List)
     Esperar loader sumir
-    ${clicked}    ${err}=    Run Keyword And Ignore Error    Click Element    ${MENU_PIM}
+    ${clicked}    ${err}=    Run Keyword And Ignore Error    Clique seguro    ${MENU_PIM}
     Run Keyword And Ignore Error    Wait Until Location Contains    /pim/    5s
     Run Keyword If    '${clicked}'=='FAIL' or '${err}'!=''    Go To    ${PIM_URL}
     Wait Until Location Contains    /pim/    15s

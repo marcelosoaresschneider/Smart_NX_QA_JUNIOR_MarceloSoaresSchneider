@@ -42,18 +42,29 @@ Dentro da pasta do projeto no terminal, execute:
 
 
 
+## Executar os testes
+
+Executar todos os testes e gerar relatórios na pasta results/:
+
+- robot -d results tests/
 
 
 
+## Como ver o relatório (resultados)
+
+Depois de executar, a pasta results/ terá os arquivos:
+
+- report.html → relatório resumido (PASS/FAIL)
+
+- log.html → detalhes passo a passo (onde falhou e por quê)
+
+- output.xml → resultado técnico
 
 
+Como abrir:
 
+- Abra a pasta results/
 
+- Clique duas vezes em report.html (abre no navegador)
 
-
-
-
-
-
-
-
+- Se algum teste falhar, abra log.html para ver o erro detalhado

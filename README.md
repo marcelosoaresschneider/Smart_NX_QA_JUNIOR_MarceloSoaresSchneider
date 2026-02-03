@@ -34,7 +34,7 @@ Depois entre na pasta do projeto
 
 Criar o arquivo `requirements.txt` (na raiz do projeto) e preencher com:
 
-- robotframework==7.0.1
+- "robotframework==7.0.1"
 - robotframework-seleniumlibrary==6.6.1
 - selenium==4.23.1
 

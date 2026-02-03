@@ -21,14 +21,6 @@ cd Smart_NX_QA_JUNIOR_MarceloSoaresSchneider
 ```
 
 ## Instalar as dependências (Robot Framework e SeleniumLibrary)
-No arquivo `requirements.txt` (na raiz do projeto) preencha com:
-
-```text
-robotframework==7.0.1
-robotframework-seleniumlibrary==6.6.1
-selenium==4.23.1
-```
-
 Dentro da pasta do projeto, no terminal, execute:
 
 ```bash

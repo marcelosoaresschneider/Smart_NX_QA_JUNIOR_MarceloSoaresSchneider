@@ -1,7 +1,7 @@
 *** Settings ***
 Resource        ../resources/pim.resource
-Suite Setup     Dado que estou logado e na tela inicial
-Suite Teardown  Fechar Navegador
+Test Setup      Dado que estou logado e na tela inicial
+Test Teardown   Fechar Navegador
 
 *** Test Cases ***
 CT04 - Pesquisar o modulo PIM

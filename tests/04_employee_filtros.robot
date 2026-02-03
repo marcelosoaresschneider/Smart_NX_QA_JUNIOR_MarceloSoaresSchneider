@@ -1,7 +1,7 @@
 *** Settings ***
 Resource        ../resources/employee.resource
-Suite Setup     Dado que estou logado e no PIM (lista de employees)
-Suite Teardown  Fechar Navegador
+Test Setup      Dado que estou logado e no PIM (lista de employees)
+Test Teardown   Fechar Navegador
 
 *** Test Cases ***
 CT13 - Pesquisar employee pelo nome
@@ -13,6 +13,10 @@ CT13 - Pesquisar employee pelo nome
     Então devo ver o employee na lista    ${EMP_ID}
 
 CT14 - Pesquisar employee pelo ID
+    Quando clico no botao Add
+    Quando preencho dados basicos do employee (sem login) e salvo
+    Então o employee deve ser cadastrado com sucesso
+
     Quando pesquiso employee pelo ID      ${EMP_ID}
     Então devo ver o employee na lista    ${EMP_ID}
 

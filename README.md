@@ -87,3 +87,14 @@ where chromedriver
 
 ## Observação sobre arquivos gerados
 A pasta `results/` é gerada quando você executa os testes e não precisa ser enviada para o GitHub.
+
+
+## Remover arquivos gerados do GitHub (se aparecerem no repositório)
+Se `output.xml` aparecer no GitHub, mesmo com `.gitignore`, é porque ele já foi commitado antes.
+Para remover do GitHub sem apagar do seu PC:
+
+```bash
+git rm --cached output.xml
+git commit -m "Remove output.xml do repositório"
+git push
+```

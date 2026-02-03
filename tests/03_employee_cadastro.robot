@@ -1,7 +1,7 @@
 *** Settings ***
 Resource        ../resources/employee.resource
-Suite Setup     Dado que estou logado e no PIM (lista de employees)
-Suite Teardown  Fechar Navegador
+Test Setup      Dado que estou logado e no PIM (lista de employees)
+Test Teardown   Fechar Navegador
 
 *** Test Cases ***
 CT08 - Validar existencia do botao Add

@@ -22,7 +22,6 @@ Quando apago a pesquisa do menu lateral
     Clear Element Text    ${SIDEBAR_SEARCH_INPUT}
 
 Então devo ver varios modulos no menu novamente
-    # validação simples: Dashboard costuma existir no menu
     Wait Until Page Contains Element    xpath=//span[normalize-space()='Dashboard']    15s
 
 Quando acesso o modulo PIM

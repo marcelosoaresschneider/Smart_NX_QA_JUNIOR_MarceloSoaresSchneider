@@ -12,7 +12,7 @@ ${LOGIN_BUTTON}             xpath=//button[@type='submit']
 
 ${USER_DROPDOWN}            xpath=//span[contains(@class,'oxd-userdropdown-tab')]
 
-${SIDEBAR_SEARCH_INPUT}     xpath=//input[@placeholder='Search']  # comum no menu lateral :contentReference[oaicite:2]{index=2}
+${SIDEBAR_SEARCH_INPUT}     xpath=//input[@placeholder='Search']
 
 ${MENU_PIM}                 xpath=//span[normalize-space()='PIM']/ancestor::a
 
@@ -33,7 +33,7 @@ ${BTN_SAVE}                 xpath=//button[@type='submit' and (normalize-space()
 ${REQUIRED_ERROR}           xpath=//span[contains(@class,'oxd-input-field-error-message') and normalize-space()='Required']
 ${EMP_ID_EXISTS_ERROR}      xpath=//label[normalize-space()='Employee Id']/../..//span[contains(@class,'oxd-input-field-error-message')]
 
-${LISTBOX}                  xpath=//div[@role='listbox']  # padrão de listbox :contentReference[oaicite:3]{index=3}
+${LISTBOX}                  xpath=//div[@role='listbox']
 
-${BTN_CONFIRM_DELETE}       xpath=//button[normalize-space()='Yes, Delete']  # texto citado em docs :contentReference[oaicite:4]{index=4}
+${BTN_CONFIRM_DELETE}       xpath=//button[normalize-space()='Yes, Delete']
 ${BTN_CANCEL_DELETE}        xpath=//button[normalize-space()='No, Cancel']

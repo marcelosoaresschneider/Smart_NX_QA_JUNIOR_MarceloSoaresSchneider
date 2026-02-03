@@ -4,7 +4,6 @@ Resource   common.resource
 Resource   locators.resource
 
 *** Keywords ***
-# ---------- Navegação ----------
 Dado que estou logado e no PIM (lista de employees)
     Abrir Site no Login
     Logar como Admin
@@ -18,7 +17,6 @@ Quando clico no botao Add
 Então devo ver a tela de cadastro de employee
     Location Should Contain    /pim/addEmployee
 
-# ---------- Cadastro ----------
 Quando tento salvar sem preencher o nome
     Wait Until Element Is Visible    ${BTN_SAVE}    15s
     Click Button    ${BTN_SAVE}
@@ -40,16 +38,13 @@ Quando preencho dados basicos do employee (sem login) e salvo
     Click Button   ${BTN_SAVE}
 
 Então o employee deve ser cadastrado com sucesso
-    # Após salvar normalmente vai para tela de detalhes do employee
     Wait Until Location Contains    /pim/viewPersonalDetails    15s
     Page Should Contain    ${EMP_FIRST}
 
-# Duplicidade de ID: cria 1 employee com um ID, tenta criar outro com o mesmo ID
 Quando tento cadastrar com Employee ID ja existente
     ${first1}    ${last1}    ${id}=    Gerar dados simples de Employee
     Set Suite Variable    ${DUP_ID}    ${id}
 
-    # 1) Criar o primeiro employee com DUP_ID
     Quando clico no botao Add
     Input Text    ${FIRST_NAME}      ${first1}
     Input Text    ${LAST_NAME}       ${last1}
@@ -58,7 +53,6 @@ Quando tento cadastrar com Employee ID ja existente
     Click Button   ${BTN_SAVE}
     Wait Until Location Contains     /pim/viewPersonalDetails    15s
 
-    # 2) Tentar criar outro employee com o mesmo ID
     Garantir que estou na lista de Employees (PIM)
     Quando clico no botao Add
     ${first2}    ${last2}    ${id2}=    Gerar dados simples de Employee
@@ -71,7 +65,6 @@ Quando tento cadastrar com Employee ID ja existente
 Então devo ver mensagem de Employee ID ja existente
     Wait Until Page Contains    Employee Id already exists    10s
 
-# ---------- Filtros ----------
 Quando pesquiso employee pelo nome
     [Arguments]    ${first}    ${last}
     Garantir que estou na lista de Employees (PIM)
@@ -95,13 +88,11 @@ Então devo ver o employee na lista
 Então devo ver que nao existe registro
     Wait Until Element Is Visible    ${NO_RECORDS}    15s
 
-# ---------- Exclusão ----------
 Quando deleto o employee pelo ID e cancelo
     [Arguments]    ${emp_id}
     Quando pesquiso employee pelo ID    ${emp_id}
     Então devo ver o employee na lista  ${emp_id}
 
-    # clica no último ícone da linha (geralmente é o delete)
     Click Element    xpath=(//div[contains(@class,'oxd-table-body')]//div[@role='row']//*[normalize-space()='${emp_id}']/ancestor::div[@role='row']//button[contains(@class,'oxd-icon-button')])[last()]
     Wait Until Element Is Visible    ${BTN_CANCEL_DELETE}    10s
     Click Button    ${BTN_CANCEL_DELETE}
@@ -118,7 +109,7 @@ Quando deleto o employee pelo ID e confirmo
 
     Click Element    xpath=(//div[contains(@class,'oxd-table-body')]//div[@role='row']//*[normalize-space()='${emp_id}']/ancestor::div[@role='row']//button[contains(@class,'oxd-icon-button')])[last()]
     Wait Until Element Is Visible    ${BTN_CONFIRM_DELETE}    10s
-    Click Button    ${BTN_CONFIRM_DELETE}   
+    Click Button    ${BTN_CONFIRM_DELETE}
 
 Então o employee deve ser excluido
     [Arguments]    ${emp_id}

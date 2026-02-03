@@ -15,7 +15,7 @@ Projeto simples de automação de testes Web com Robot Framework e SeleniumLibra
 ## Baixar o projeto (clonar do GitHub)
 No terminal, execute:
 
-```bash
+```powershell
 git clone https://github.com/marcelosoaresschneider/Smart_NX_QA_JUNIOR_MarceloSoaresSchneider.git
 cd Smart_NX_QA_JUNIOR_MarceloSoaresSchneider
 ```
@@ -23,13 +23,13 @@ cd Smart_NX_QA_JUNIOR_MarceloSoaresSchneider
 ## Instalar as dependências (Robot Framework e SeleniumLibrary)
 Dentro da pasta do projeto, no terminal, execute:
 
-```bash
+```powershell
 py -m pip install -r requirements.txt
 ```
 
 Se o comando `py` não funcionar, use:
 
-```bash
+```powershell
 python -m pip install -r requirements.txt
 ```
 
@@ -39,7 +39,7 @@ Isso ajuda a simular um PC "novo" e evita conflito com outras instalações do P
 ### Windows (PowerShell)
 Dentro da pasta do projeto:
 
-```bash
+```powershell
 py -m venv .venv
 \.venv\Scripts\Activate.ps1
 python -m pip install --upgrade pip
@@ -48,7 +48,7 @@ python -m pip install -r requirements.txt
 
 Para sair do venv:
 
-```bash
+```powershell
 deactivate
 ```
 
@@ -56,11 +56,12 @@ deactivate
 ## Dicas para evitar erros intermitentes
 - Feche janelas/abas do Chrome que possam roubar foco durante a execução.
 - Execute sempre com saída em uma pasta limpa:
-```bash
+```powershell
 rmdir /s /q results
 robot -d results tests/
 ```
 - O OrangeHRM pode exibir mensagens em PT-BR ou EN; as validações de texto foram feitas por **parte do texto** para evitar quebra por variação de idioma.
+- O projeto já define `Set Selenium Timeout    30s` ao abrir o navegador (arquivo `resources/common.resource`). Se o site estiver lento, você pode aumentar esse valor.
 
 
 ## Erros comuns
@@ -70,7 +71,7 @@ Se aparecer erro parecido com "This version of ChromeDriver only supports Chrome
 
 Solução simples (Windows):
 1. No terminal, rode:
-```bash
+```powershell
 where chromedriver
 ```
 2. Se aparecer algum caminho, apague ou renomeie o `chromedriver.exe` antigo.
@@ -78,20 +79,20 @@ where chromedriver
 - Abra o Explorador de Arquivos e cole: `%USERPROFILE%\.cache\selenium`
 - Apague a pasta.
 4. Rode o teste novamente:
-```bash
+```powershell
 robot -d results tests/01_login.robot
 ```
 
 ## Executar os testes
 Recomendado para testar primeiro (Login):
 
-```bash
+```powershell
 robot -d results tests/01_login.robot
 ```
 
 Executar todos os testes e gerar relatórios na pasta `results/`:
 
-```bash
+```powershell
 robot -d results tests/
 ```
 

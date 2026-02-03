@@ -4,43 +4,26 @@ Library     String
 Resource    locators.resource
 
 *** Keywords ***
-Esperar loader sumir
-    Run Keyword And Ignore Error    Wait Until Element Is Not Visible    ${FORM_LOADER}    15s
-
-Aguardar pagina pronta
-    Wait Until Keyword Succeeds    20x    0.5s    Documento deve estar pronto
-    Esperar loader sumir
-
-Documento deve estar pronto
-    ${state}=    Execute Javascript    return document.readyState
-    Should Be Equal    ${state}    complete
-
-Clique seguro
-    [Arguments]    ${locator}
-    Aguardar pagina pronta
-    Wait Until Element Is Visible    ${locator}    15s
-    Wait Until Keyword Succeeds    10x    1s    Click Element    ${locator}
-
 Abrir Site no Login
     Open Browser    ${BASE_URL}    ${BROWSER}
     Maximize Browser Window
+    Set Selenium Timeout    30s
 
 Fechar Navegador
     Close Browser
 
 Logar como Admin
-    Wait Until Element Is Visible    ${LOGIN_USERNAME}    15s
+    Wait Until Element Is Visible    ${LOGIN_USERNAME}    30s
     Input Text       ${LOGIN_USERNAME}    ${VALID_USER}
     Input Password   ${LOGIN_PASSWORD}    ${VALID_PASS}
-    Clique seguro    ${LOGIN_BUTTON}
-    Wait Until Element Is Visible    ${USER_DROPDOWN}     15s
+    Wait Until Element Is Visible    ${LOGIN_BUTTON}      30s
+    Click Element    ${LOGIN_BUTTON}
+    Wait Until Element Is Visible    ${USER_DROPDOWN}     30s
 
 Ir para o módulo PIM (Employee List)
-    Esperar loader sumir
-    ${clicked}    ${err}=    Run Keyword And Ignore Error    Clique seguro    ${MENU_PIM}
-    Run Keyword And Ignore Error    Wait Until Location Contains    /pim/    5s
-    Run Keyword If    '${clicked}'=='FAIL' or '${err}'!=''    Go To    ${PIM_URL}
-    Wait Until Location Contains    /pim/    15s
+    Wait Until Element Is Visible    ${MENU_PIM}    30s
+    Click Element    ${MENU_PIM}
+    Wait Until Location Contains     /pim/         30s
 
 Gerar dados simples de Employee
     ${rand}=    Generate Random String    6    [LETTERS]
@@ -51,4 +34,4 @@ Gerar dados simples de Employee
 
 Garantir que estou na lista de Employees (PIM)
     Ir para o módulo PIM (Employee List)
-    Wait Until Element Is Visible    ${BTN_ADD}    15s
+    Wait Until Element Is Visible    ${BTN_ADD}    30s

@@ -1,6 +1,7 @@
 *** Variables ***
 
 ${BASE_URL}                 https://opensource-demo.orangehrmlive.com/web/index.php/auth/login
+${PIM_URL}                  https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewEmployeeList
 ${BROWSER}                  chrome
 
 ${VALID_USER}               Admin
@@ -14,7 +15,7 @@ ${USER_DROPDOWN}            xpath=//span[contains(@class,'oxd-userdropdown-tab')
 
 ${SIDEBAR_SEARCH_INPUT}     xpath=//input[@placeholder='Search']
 
-${MENU_PIM}                 xpath=//span[contains(normalize-space(.),'PIM')]/ancestor::a
+${MENU_PIM}                 xpath=//a[.//span[normalize-space(.)='PIM' or contains(normalize-space(.),'PIM')]]
 
 ${BTN_ADD}                  xpath=//div[contains(@class,'orangehrm-header-container')]//button[contains(normalize-space(.),'Add')]
 ${BTN_SEARCH}               xpath=//button[contains(normalize-space(.),'Search')]
@@ -37,3 +38,5 @@ ${LISTBOX}                  xpath=//div[@role='listbox']
 
 ${BTN_CONFIRM_DELETE}       xpath=//button[contains(normalize-space(.),'Yes, Delete')]
 ${BTN_CANCEL_DELETE}        xpath=//button[contains(normalize-space(.),'No, Cancel')]
+
+${FORM_LOADER}              xpath=//div[contains(@class,'oxd-form-loader')]

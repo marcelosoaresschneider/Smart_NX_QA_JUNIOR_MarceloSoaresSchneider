@@ -81,7 +81,7 @@ Quando pesquiso employee pelo nome
     Clear Element Text    ${EMPLOYEE_NAME_FILTER}
     Input Text            ${EMPLOYEE_NAME_FILTER}    ${first} ${last}
     Wait Until Element Is Visible    ${LISTBOX}    10s
-    Click Element    xpath=//div[@role='listbox']//span[contains(normalize-space(.),'${first}')]
+    Wait Until Keyword Succeeds    10x    1s    Selecionar opcao no autocomplete    ${first}
     Click Button     ${BTN_SEARCH}
 
 Quando pesquiso employee pelo ID
@@ -93,7 +93,7 @@ Quando pesquiso employee pelo ID
 
 Então devo ver o employee na lista
     [Arguments]    ${emp_id}
-    Wait Until Page Contains    ${emp_id}    15s
+    Wait Until Page Contains Element    xpath=//div[contains(@class,'oxd-table-body')]//div[@role='cell']//div[normalize-space(.)='${emp_id}']    15s
 
 Então devo ver que nao existe registro
     Wait Until Element Is Visible    ${NO_RECORDS}    15s
@@ -105,7 +105,9 @@ Quando deleto o employee pelo ID e cancelo
 
     Click Element    xpath=(//div[contains(@class,'oxd-table-body')]//div[@role='row']//*[normalize-space()='${emp_id}']/ancestor::div[@role='row']//button[contains(@class,'oxd-icon-button')])[last()]
     Wait Until Element Is Visible    ${BTN_CANCEL_DELETE}    10s
+    Esperar loader sumir
     Click Button    ${BTN_CANCEL_DELETE}
+    Esperar loader sumir
 
 Então o employee nao deve ser excluido
     [Arguments]    ${emp_id}
@@ -119,7 +121,9 @@ Quando deleto o employee pelo ID e confirmo
 
     Click Element    xpath=(//div[contains(@class,'oxd-table-body')]//div[@role='row']//*[normalize-space()='${emp_id}']/ancestor::div[@role='row']//button[contains(@class,'oxd-icon-button')])[last()]
     Wait Until Element Is Visible    ${BTN_CONFIRM_DELETE}    10s
+    Esperar loader sumir
     Click Button    ${BTN_CONFIRM_DELETE}
+    Esperar loader sumir
 
 Então o employee deve ser excluido
     [Arguments]    ${emp_id}

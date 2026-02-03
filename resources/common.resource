@@ -4,6 +4,9 @@ Library     String
 Resource    locators.resource
 
 *** Keywords ***
+Esperar loader sumir
+    Run Keyword And Ignore Error    Wait Until Element Is Not Visible    ${FORM_LOADER}    15s
+
 Abrir Site no Login
     Open Browser    ${BASE_URL}    ${BROWSER}
     Maximize Browser Window
@@ -19,7 +22,10 @@ Logar como Admin
     Wait Until Element Is Visible    ${USER_DROPDOWN}     15s
 
 Ir para o módulo PIM (Employee List)
-    Click Element    ${MENU_PIM}
+    Esperar loader sumir
+    ${clicked}    ${err}=    Run Keyword And Ignore Error    Click Element    ${MENU_PIM}
+    Run Keyword And Ignore Error    Wait Until Location Contains    /pim/    5s
+    Run Keyword If    '${clicked}'=='FAIL' or '${err}'!=''    Go To    ${PIM_URL}
     Wait Until Location Contains    /pim/    15s
 
 Gerar dados simples de Employee

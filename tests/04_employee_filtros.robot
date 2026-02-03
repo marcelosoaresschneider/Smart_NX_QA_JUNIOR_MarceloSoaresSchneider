@@ -21,6 +21,7 @@ CT14 - Pesquisar employee pelo ID
 CT15 - Pesquisar employee com nome inexistente
     Clear Element Text    ${EMPLOYEE_NAME_FILTER}
     Input Text            ${EMPLOYEE_NAME_FILTER}    NomeQueNaoExiste123
+    Press Keys            ${EMPLOYEE_NAME_FILTER}    TAB
     Click Button          ${BTN_SEARCH}
     Então devo ver que nao existe registro
 

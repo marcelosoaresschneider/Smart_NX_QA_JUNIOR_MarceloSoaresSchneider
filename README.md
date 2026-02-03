@@ -33,6 +33,26 @@ Se o comando `py` não funcionar, use:
 python -m pip install -r requirements.txt
 ```
 
+
+## Erros comuns
+
+### Erro de ChromeDriver (SessionNotCreatedException)
+Se aparecer erro parecido com "This version of ChromeDriver only supports Chrome version X", significa que existe um ChromeDriver incompatível no computador.
+
+Solução simples (Windows):
+1. No terminal, rode:
+```bash
+where chromedriver
+```
+2. Se aparecer algum caminho, apague ou renomeie o `chromedriver.exe` antigo.
+3. Apague o cache do Selenium:
+- Abra o Explorador de Arquivos e cole: `%USERPROFILE%\.cache\selenium`
+- Apague a pasta.
+4. Rode o teste novamente:
+```bash
+robot -d results tests/01_login.robot
+```
+
 ## Executar os testes
 Recomendado para testar primeiro (Login):
 

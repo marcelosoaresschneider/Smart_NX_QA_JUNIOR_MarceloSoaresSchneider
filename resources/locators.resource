@@ -16,7 +16,7 @@ ${SIDEBAR_SEARCH_INPUT}     xpath=//input[@placeholder='Search']
 
 ${MENU_PIM}                 xpath=//span[contains(normalize-space(.),'PIM')]/ancestor::a
 
-${BTN_ADD}                  xpath=//button[normalize-space()='+ Add' or normalize-space()='Add' or contains(.,'Add')]
+${BTN_ADD}                  xpath=//div[contains(@class,'orangehrm-header-container')]//button[contains(normalize-space(.),'Add')]
 ${BTN_SEARCH}               xpath=//button[contains(normalize-space(.),'Search')]
 ${BTN_RESET}                xpath=//button[contains(normalize-space(.),'Reset')]
 ${NO_RECORDS}               xpath=//span[contains(normalize-space(.),'No Records Found')]

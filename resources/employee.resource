@@ -39,7 +39,10 @@ Quando preencho dados basicos do employee (sem login) e salvo
 
 Então o employee deve ser cadastrado com sucesso
     Wait Until Location Contains    /pim/viewPersonalDetails    15s
-    Page Should Contain    ${EMP_FIRST}
+    Wait Until Element Is Visible    ${FIRST_NAME}    15s
+    ${first}=    Get Value    ${FIRST_NAME}
+    Should Contain    ${first}    ${EMP_FIRST}
+
 
 Quando tento cadastrar com Employee ID ja existente
     ${first1}    ${last1}    ${id}=    Gerar dados simples de Employee

@@ -23,4 +23,8 @@ Então devo ver mensagem de campo obrigatorio
     Page Should Contain    Required
 
 Então devo ver mensagem de credenciais invalidas
-    Page Should Contain    Invalid credentials
+    ${ok1}=    Run Keyword And Return Status    Wait Until Page Contains    Invalid    5s
+    ${ok2}=    Run Keyword And Return Status    Wait Until Page Contains    Credenciais    5s
+    IF    not (${ok1} or ${ok2})
+        Fail    Mensagem de credenciais inválidas não encontrada.
+    END

@@ -1,5 +1,12 @@
-results/
-output.xml
+*.html
+*.log
+*.png
+*.pyc
+*.xml
+.pytest_cache/
+.venv/
+__pycache__/
 log.html
+output.xml
 report.html
-
+results/

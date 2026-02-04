@@ -1,108 +1,95 @@
-# Smart NX - QA Jr - Robot Framework + SeleniumLibrary (OrangeHRM)
+# Projeto de Testes Automatizados (Robot Framework + SeleniumLibrary)
 
-Projeto simples de automação de testes Web com Robot Framework e SeleniumLibrary, usando cenários em estilo Gherkin (Dado/Quando/Então/E) no site OrangeHRM. Inclui testes de Login, do módulo PIM, Cadastro de Employee, Filtros de Employee e Exclusão de Employee.
+Projeto simples de automação de testes Web com **Robot Framework** + **SeleniumLibrary** no site **OrangeHRM**.
 
-## Estrutura de pastas do projeto
+## Existem 2 formas de testar
+Você pode executar os testes de duas maneiras:
+
+1. **Opção 1 (recomendada) — com venv (ambiente isolado)**
+2. **Opção 2 (execução rápida) - sem venv**
+
+Abaixo estão as duas opções com o passo a passo completo.
+
+---
+
+## Requisitos
+- **Python** instalado (recomendado: 3.10+)
+- **Google Chrome** instalado
+- Acesso à internet (para abrir o site do OrangeHRM)
+
+> Observação: o `requirements.txt` foi preparado para funcionar em versões comuns do Python (incluindo 3.13), sem exigir uma versão específica.
+
+---
+
+## Estrutura do projeto
 - `tests/` → arquivos `.robot` (casos de teste)
-- `resources/` → keywords e variáveis reutilizáveis
-- `results/` → relatórios gerados ao executar (log e report)
+- `resources/` → keywords, variáveis e locators reutilizáveis
 
-## Pré-condições (o que preciso ter antes da execução)
-- Python instalado (3.10 ou superior)
-- Google Chrome instalado
-- Git instalado
+---
 
-## Baixar o projeto (clonar do GitHub)
-No terminal, execute:
+## Opção 1 (recomendada) — com venv (ambiente isolado)
+> Use esta opção para simular um ambiente “limpo” e evitar conflitos no seu Python.
 
+### 1) Abrir o terminal na pasta do projeto
+No Windows: abra a pasta do projeto e use **PowerShell** nela.
+
+### 2) Criar o venv
 ```powershell
-git clone https://github.com/marcelosoaresschneider/Smart_NX_QA_JUNIOR_MarceloSoaresSchneider.git
-cd Smart_NX_QA_JUNIOR_MarceloSoaresSchneider
+python -m venv .venv
 ```
 
-## Instalar as dependências (Robot Framework e SeleniumLibrary)
-Dentro da pasta do projeto, no terminal, execute:
-
+### 3) Ativar o venv
 ```powershell
-py -m pip install -r requirements.txt
+.\.venv\Scripts\Activate.ps1
 ```
 
-Se o comando `py` não funcionar, use:
-
+Se aparecer erro de política (ExecutionPolicy), rode:
 ```powershell
-python -m pip install -r requirements.txt
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+.\.venv\Scripts\Activate.ps1
 ```
 
-## Recomendado: criar um ambiente "limpo" (venv)
-Isso ajuda a simular um PC "novo" e evita conflito com outras instalações do Python.
-
-### Windows (PowerShell)
-Dentro da pasta do projeto:
-
+### 4) Atualizar pip e instalar dependências
 ```powershell
-py -m venv .venv
-\.venv\Scripts\Activate.ps1
 python -m pip install --upgrade pip
-python -m pip install -r requirements.txt
+pip install -r requirements.txt
 ```
 
-Para sair do venv:
-
+### 5) Executar os testes (gera evidências em `results`)
 ```powershell
-deactivate
+robot -d results tests
 ```
 
+### 6) Ver relatórios
+Abra no navegador:
+- `resultseport.html`
+- `results\log.html`
 
-## Dicas para evitar erros intermitentes
-- Feche janelas/abas do Chrome que possam roubar foco durante a execução.
-- Execute sempre com saída em uma pasta limpa:
+---
+
+## Opção 2 (execução rápida) - sem venv
+> Use esta opção se você só quer instalar e rodar rapidamente.
+
+### 1) Abrir o terminal na pasta do projeto
+No Windows: abra a pasta do projeto e use **PowerShell** nela.
+
+### 2) Instalar dependências
 ```powershell
-rmdir /s /q results
-robot -d results tests/
+pip install -r requirements.txt
 ```
-- O OrangeHRM pode exibir mensagens em PT-BR ou EN; as validações de texto foram feitas por **parte do texto** para evitar quebra por variação de idioma.
-- O projeto já define `Set Selenium Timeout    30s` ao abrir o navegador (arquivo `resources/common.resource`). Se o site estiver lento, você pode aumentar esse valor.
 
-
-## Erros comuns
-
-### Erro de ChromeDriver (SessionNotCreatedException)
-Se aparecer erro parecido com "This version of ChromeDriver only supports Chrome version X", significa que existe um ChromeDriver incompatível no computador.
-
-Solução simples (Windows):
-1. No terminal, rode:
+### 3) Executar os testes (gera evidências em `results`)
 ```powershell
-where chromedriver
-```
-2. Se aparecer algum caminho, apague ou renomeie o `chromedriver.exe` antigo.
-3. Apague o cache do Selenium:
-- Abra o Explorador de Arquivos e cole: `%USERPROFILE%\.cache\selenium`
-- Apague a pasta.
-4. Rode o teste novamente:
-```powershell
-robot -d results tests/01_login.robot
+robot -d results tests
 ```
 
-## Executar os testes
-Recomendado para testar primeiro (Login):
+### 4) Ver relatórios
+Abra no navegador:
+- `resultseport.html`
+- `results\log.html`
 
-```powershell
-robot -d results tests/01_login.robot
-```
+---
 
-Executar todos os testes e gerar relatórios na pasta `results/`:
-
-```powershell
-robot -d results tests/
-```
-
-## Como ver o relatório (resultados)
-Depois de executar, a pasta `results/` terá os arquivos:
-- `report.html` → relatório resumido (PASS/FAIL)
-- `log.html` → detalhes passo a passo (onde falhou e por quê)
-- `output.xml` → resultado técnico
-
-Como abrir:
-1. Abra a pasta `results/`
-2. Clique duas vezes em `report.html` (abre no navegador)
-3. Se algum teste falhar, abra `log.html` para ver o erro detalhado
+## Observações
+- Os relatórios ficam na pasta `results/`.
+- Se algum teste falhar, compacte a pasta `results` (inclui `output.xml`, `log.html`, `report.html`) para análise.

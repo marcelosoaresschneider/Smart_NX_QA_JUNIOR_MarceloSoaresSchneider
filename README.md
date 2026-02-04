@@ -62,7 +62,8 @@ robot -d results tests
 
 ### 6) Ver relatórios
 Abra no navegador:
-- `resultseport.html`
+- `results
+report.html`
 - `results\log.html`
 
 ---
@@ -85,7 +86,8 @@ robot -d results tests
 
 ### 4) Ver relatórios
 Abra no navegador:
-- `resultseport.html`
+- `results
+report.html`
 - `results\log.html`
 
 ---
